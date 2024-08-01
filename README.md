@@ -1,1 +1,1 @@
-Careflow-patient management system for  patient groups
+Careflow-patient management system for  patients , reminder SMS 
