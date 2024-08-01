@@ -14,23 +14,47 @@ import {
 import { FormFieldType } from '../forms/PatientForm'
 interface CustomProps{
     control: Control<any>,
-    fieldType: FormFieldType
+    fieldType: FormFieldType,
+    name: string,
+    label ?: string,
+    placeholder?: string,
+    iconSrc?: string,
+    iconAlt?: string,
+    disabled?: boolean,
+    dateFormat?: string,
+    showTimeSelect?: boolean,
+    children?:React.ReactNode,
+    renderSkeleton?: (field:any) => React.ReactNode,
 }
-const CustomFormField = ({ control,fieldType }: CustomProps) => {
+
+const RenderField=({field,props}:{field: any; props:CustomProps}) => {
+    return(
+        <input
+            type="text"
+            placeholder='john doe'
+        />
+    )
+
+
+}
+
+const CustomFormField = (props: CustomProps) => {
+    const{ control,fieldType,name,label,}=props;
   return (
     <FormField
     control={control}
-    name="username"
+    name={name}
     render={({ field }) => (
-      <FormItem>
-        <FormLabel>Username</FormLabel>
-        <FormControl>
-          <Input placeholder="shadcn" {...field} />
-        </FormControl>
-        <FormDescription>
-          This is your public display name.
-        </FormDescription>
-        <FormMessage />
+      <FormItem className='flex-1'>
+    {fieldType !== FormFieldType.CHECKBOX && label &&  (
+
+        <FormLabel>{label}</FormLabel>
+    )}
+
+    <RenderField field={ field} props={props}/>
+
+    <FormMessage className='shad-error'/>
+
       </FormItem>
     )}
   />
