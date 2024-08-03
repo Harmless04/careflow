@@ -2,6 +2,8 @@
 import React from 'react'
 import { Input } from "@/components/ui/input"
 import { Control } from 'react-hook-form'
+import Image from 'next/image';
+
 import {
     Form,
     FormControl,
@@ -28,12 +30,35 @@ interface CustomProps{
 }
 
 const RenderField=({field,props}:{field: any; props:CustomProps}) => {
-    return(
-        <input
-            type="text"
-            placeholder='john doe'
-        />
-    )
+    const {fieldType,iconSrc,iconAlt,placeholder,} = props;
+    switch (fieldType){
+      case FormFieldType.INPUT:
+        return(
+          <div className="flex rounded-md border border-dark-500 bg-dark-400">
+            {iconSrc &&(
+              <Image
+              src={iconSrc}
+              height={24}
+              width={24}
+              alt={iconAlt || 'icon'}
+              className='ml-2'
+              />
+
+            ) }
+            <FormControl>
+              <Input
+            placeholder={placeholder}
+            {...field}
+            className='shad-input border-0'
+            
+              />
+
+            </FormControl>
+          </div>
+        )
+        default:
+          break;
+    }
 
 
 }
