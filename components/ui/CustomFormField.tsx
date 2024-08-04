@@ -3,7 +3,7 @@ import React from 'react'
 import { Input } from "@/components/ui/input"
 import { Control } from 'react-hook-form'
 import Image from 'next/image';
-import { E164Number } from 'react-phone-number-input';
+ 
 
 import {
     Form,
@@ -17,6 +17,7 @@ import {
 import { FormFieldType } from '../forms/PatientForm'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input' 
+import { E164Number } from 'react-phone-number-input';
 
 interface CustomProps{
     control: Control<any>,
